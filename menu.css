@@ -1,0 +1,263 @@
+:root {
+  --primary-color: hsl(196, 78%, 61%);
+    --secondary-color: hsl(217, 15%, 83%);
+    --success-color: hsl(165, 58%, 55%);
+    --info-color: hsl(214, 79%, 65%);
+    --warning-color: hsl(43, 100%, 66%);
+    --danger-color: hsl(354, 81%, 63%);
+    --primary-color-darker: hsl(196, 68%, 54%);
+    --secondary-color-darker: hsl(215, 13%, 70%);
+    --success-color-darker: hsl(165, 55%, 48%);
+    --info-color-darker: hsl(214, 68%, 58%);
+    --warning-color-darker: hsl(39, 97%, 62%);
+    --danger-color-darker: hsl(354, 67%, 56%);
+    --primary-color-lighter: hsl(196, 78%, 81%);
+    --secondary-color-lighter: hsl(214, 16%, 92%);
+    --success-color-lighter: hsl(165, 58%, 75%);
+    --info-color-lighter: hsl(214, 79%, 85%);
+    --warning-color-lighter: hsl(43, 100%, 86%);
+    --danger-color-lighter: hsl(354, 81%, 83%);
+    --secondary-color-darkest: hsl(215, 11%, 30%);
+    --secondary-color-lightest: hsl(220, 1%, 98%);
+    --white: #afafaf;
+    --red: #e31b23;
+    --bodyColor: #292a2b;
+    --borderFormEls: hsl(0, 0%, 10%);
+    --bgFormEls: hsl(0, 0%, 14%);
+    --bgFormElsFocus: hsl(0, 7%, 20%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.my-form{
+  display: flex;
+}
+
+.my-form h1 {
+  margin-bottom: 1.5rem;
+}
+
+.my-form li,
+.my-form .grid > *:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.my-form select,
+.my-form input,
+.my-form textarea,
+.my-form button {
+  /* width: 100%; */
+  line-height: 1.5;
+  padding: 15px 10px;
+  border: 1px solid var(--borderFormEls);
+  color: var(--white);
+  background: var(--bgFormEls);
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.my-form textarea {
+  height: 170px;
+}
+
+.my-form ::placeholder {
+  color: inherit;
+  /*Fix opacity issue on Firefox*/
+  opacity: 1;
+}
+
+.my-form select:focus,
+.my-form input:focus,
+.my-form textarea:focus,
+.my-form button:enabled:hover,
+.my-form button:focus,
+.my-form input[type="checkbox"]:focus + label {
+  background: var(--bgFormElsFocus);
+}
+
+.my-form input[value="zaloguj"]:hover {
+  background: var(--bgFormElsFocus);
+} 
+
+.my-form select:focus,
+.my-form input:focus,
+.my-form textarea:focus {
+  transform: scale(1.02);
+}
+
+.my-form *:required,
+.my-form select {
+  background-repeat: no-repeat;
+  background-position: center right 12px;
+  background-size: 15px 15px;
+}
+
+.my-form *:required {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg);  
+}
+
+.my-form select {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/down.svg);
+}
+
+.my-form *:disabled {
+  cursor: default;
+  filter: blur(2px);
+}
+
+.my-form input[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+}
+
+.my-form input[type="checkbox"] + label {
+  position: relative;
+  display: inline-block;
+  padding-left: 2rem;
+  transition: background 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.my-form input[type="checkbox"] + label::before,
+.my-form input[type="checkbox"] + label::after {
+  content: '';
+  position: absolute;
+}
+
+.my-form input[type="checkbox"] + label::before {
+  left: 0;
+  top: 6px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--white);
+}
+
+.my-form input[type="checkbox"]:checked + label::before {
+  background: var(--red);
+}
+
+.my-form input[type="checkbox"]:not(:checked) + label{
+  cursor: pointer;
+}
+
+.my-form input[type="checkbox"]:checked + label::after {
+  left: 7px;
+  top: 7px;
+  width: 6px;
+  height: 14px;
+  border-bottom: 2px solid var(--white);
+  border-right: 2px solid var(--white);
+  transform: rotate(45deg);
+}
+
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  color: transparent;
+  width: 100px;
+  margin-left: 10px;
+}
+a {
+  text-decoration: none;
+  color:lightgray;
+}
+.menu-hover-fill li {
+  position: relative;
+}
+.menu-hover-fill li::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: -1rem;
+  width: 0.25rem;
+  height: 100%;
+  background: var(--menu-link-active-color);
+  transition: 0.6s;
+}
+.menu-hover-fill li a {
+  --menu-link-color: var(--grey-color);
+  position: relative;
+  background: linear-gradient(var(--menu-link-active-color) 0 100%) left / 0 no-repeat;
+  color: var(--secondary-color-darker);
+  text-decoration: none;
+  background-clip: text;
+  -webkit-background-clip: text;
+  transition: background-size 0.45s 0.04s;
+}
+.menu-hover-fill li a::before {
+  position: absolute;
+  content: attr(data-text);
+  z-index: -1;
+  color: var(--menu-link-color);
+}
+.menu-hover-fill li:nth-child(1) {
+  --menu-link-active-color: var(--primary-color);
+}
+.menu-hover-fill li:nth-child(2) {
+  --menu-link-active-color: var(--info-color);
+}
+.menu-hover-fill li:nth-child(3) {
+  --menu-link-active-color: var(--success-color);
+}
+.menu-hover-fill li:nth-child(4) {
+  --menu-link-active-color: var(--warning-color);
+}
+.menu-hover-fill li:nth-child(5) {
+  --menu-link-active-color: var(--danger-color);
+}
+.menu-hover-fill li:hover::before {
+  left: calc(100% + 1rem);
+}
+.menu-hover-fill li:hover a {
+  background-size: 100%;
+}
+.menu-hover-fill li:nth-child(1):hover a{
+  color: var(--primary-color)
+}
+.menu-hover-fill li:nth-child(2):hover a{
+  color: var(--info-color)
+}
+.menu-hover-fill li:nth-child(3):hover a{
+  color: var(--success-color)
+}
+.menu-hover-fill li:nth-child(4):hover a{
+  color: var(--warning-color)
+}
+.menu-hover-fill li:nth-child(5):hover a{
+  color: var(--danger-color)
+}
+
+@keyframes box_shadow_oferta{
+  from{
+    box-shadow: 0 0 0 1px rgba(250,250,250,0.1); 
+  }
+  to{
+    box-shadow: 0 0 0 10px rgba(250,250,250,0.1);
+  }
+}
+
+div.oferta img[alt="error"], div.oferta{
+  transition: transform .2s;
+}
+
+div.oferta:hover{
+  color:white;
+   /* box-shadow: 0 0 0 10px rgba(250,250,250,0.1);
+   transition: transform .2s; */
+   animation-name: box_shadow_oferta;
+   animation-duration: 0.4s;
+   animation-fill-mode: forwards;
+}
+
+div.oferta img[alt="error"]:hover{
+  transform: scale(1.5);
+  cursor: zoom-in;
+}
